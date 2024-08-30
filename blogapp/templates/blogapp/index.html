@@ -1,0 +1,43 @@
+{% extends 'blogapp/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Meus Cursos</h1>
+<div class="row">
+    {% for curso in cursos %}
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ curso.nome }}</h5>
+                <p class="card-text">{{ curso.descricao }}</p>
+                <p class="card-text"><small class="text-muted">Concluído em: {{ curso.data_conclusao }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h2 class="mb-4">linguagens de interesse</h2>
+<ul>
+    {% for interesse in interesses %}
+    <li>
+        <strong>{{ interesse.nome }}</strong><br>
+        {{ interesse.descricao }}
+    </li>
+    {% endfor %}
+</ul>
+
+<h2 class="mb-4">Projetos</h2>
+<div class="row">
+    {% for projeto in projetos %}
+    <div class="col-md-4">
+        <div class="card project-card mb-4">
+            <img src="{{ projeto.imagem.url }}" class="card-img-top" alt="{{ projeto.titulo }}">
+            <div class="project-card-body">
+                <h5 class="project-title">{{ projeto.titulo }}</h5>
+                <p class="project-summary">{{ projeto.resumo }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
